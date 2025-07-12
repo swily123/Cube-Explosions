@@ -15,13 +15,13 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < countCubes; i++)
         {
-            Cube newCube = Instantiate(parentCube, transform.position, Quaternion.identity);
+            Cube newCube = Instantiate(parentCube, parentCube.transform.position, Quaternion.identity);
 
-            if (newCube.GetComponent<MeshRenderer>())
+            if (newCube.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
             {
                 newCube.transform.localScale = parentCube.gameObject.transform.localScale / 2;
                 newCube.InheritSeparationChance(parentCube.SeparationChances);
-                newCube.GetComponent<MeshRenderer>().material.color = _colorist.GetRandomColor();
+                meshRenderer.material.color = _colorist.GetRandomColor();
 
                 createdCubes.Add(newCube.GetComponent<Cube>());
             }
