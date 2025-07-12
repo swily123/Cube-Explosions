@@ -534,6 +534,8 @@ GameObject:
   - component: {fileID: 1314140876}
   - component: {fileID: 1314140875}
   - component: {fileID: 1314140874}
+  - component: {fileID: 1314140881}
+  - component: {fileID: 1314140880}
   m_Layer: 0
   m_Name: Arena
   m_TagString: Untagged
@@ -569,9 +571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd47cd3af3633594993dd737c767464d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubeDetector: {fileID: 0}
-  _spawner: {fileID: 0}
-  _exploder: {fileID: 0}
+  _cubeDetector: {fileID: 1314140878}
+  _spawner: {fileID: 1314140875}
+  _exploder: {fileID: 1314140876}
 --- !u!114 &1314140875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,7 +586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666ed9d6538d1a64690e645c90803e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorist: {fileID: 0}
+  _colorist: {fileID: 1314140877}
 --- !u!114 &1314140876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,8 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6cf3686e6bbf624083b6c8a0995e3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _explosionRadius: 3
-  _explosionForce: 100
+  _zoner: {fileID: 1314140881}
+  _effector: {fileID: 1314140880}
 --- !u!114 &1314140877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,8 +635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a04ea3f0d95d31040b98ea50067f9c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _camera: {fileID: 0}
-  _clickHandler: {fileID: 0}
+  _camera: {fileID: 963194227}
+  _clickHandler: {fileID: 1314140879}
 --- !u!114 &1314140879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,6 +647,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56993cd6d1d236844b1b6a4d25aa13ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1314140880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314140872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35092456b2923c46840e0a1fc9d413f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionEffect:
+  - {fileID: 2433282508523890284, guid: 3ef3ae421f71c5c4e97fe12dc2fc6312, type: 3}
+  - {fileID: 725748389856807712, guid: 4bda94453d2ca7444a0fff05b2d425f5, type: 3}
+  - {fileID: 4593184484909914550, guid: 2e1e9506f5904a64b81744324fb7cd50, type: 3}
+  - {fileID: 8194992990867289333, guid: 99bc28c0d45f51c4fbac01080b73edc7, type: 3}
+  - {fileID: 8791802859067835849, guid: ae07f2a45f14a82428409cfe410e6002, type: 3}
+  - {fileID: 1978689737715041618, guid: afa54037ffe627545886e2741abb365d, type: 3}
+--- !u!114 &1314140881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1314140872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa97f5ec32d5004c86272deac22e6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1722835231
@@ -1051,10 +1084,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 963194227}
     - target: {fileID: 1774004213994488047, guid: 29412a2c7499c7b4587435e20f6b9c73, type: 3}
       propertyPath: m_Name
       value: Cube

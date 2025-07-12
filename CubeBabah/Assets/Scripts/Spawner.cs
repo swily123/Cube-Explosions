@@ -20,7 +20,7 @@ public class Spawner : MonoBehaviour
             if (newCube.TryGetComponent<MeshRenderer>(out MeshRenderer meshRenderer))
             {
                 newCube.transform.localScale = parentCube.gameObject.transform.localScale / 2;
-                newCube.InheritSeparationChance(parentCube.SeparationChances);
+                newCube.InheritParentCharacteristics(parentCube.SeparationChances, parentCube.PotentialExplosionRadius, parentCube.PotentialExplosionForce);
                 meshRenderer.material.color = _colorist.GetRandomColor();
 
                 createdCubes.Add(newCube.GetComponent<Cube>());

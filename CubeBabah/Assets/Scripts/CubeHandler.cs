@@ -32,11 +32,12 @@ public class CubeHandler : MonoBehaviour
         if (shouldSeparate)
         {
             List<Cube> spawnedCubes = _spawner.Spawn(cube);
-            _exploder.Explode(spawnedCubes);
+            _exploder.Explode(cube.transform, spawnedCubes);
         }
         else
         {
             Debug.Log($"Не получилось разделить куб. У него был Шанс успеха: {cube.SeparationChances}%.");
+            _exploder.Explode(cube.transform, 0, cube.PotentialExplosionForce, cube.PotentialExplosionRadius);
         }
     }
 }
