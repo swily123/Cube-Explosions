@@ -1,34 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-
-public class CubeController : MonoBehaviour
+public class CubeHandler : MonoBehaviour
 {
-    [SerializeField] private CubeDetector _clickHandler;
+    [SerializeField] private CubeDetector _cubeDetector;
     [SerializeField] private Spawner _spawner;
     [SerializeField] private Exploder _exploder;
 
-    public int SeparationChances { get; private set; } = 100;
     private const int _maxSeparationsChance = 100;
-
-    public void InheritSeparationChance(int parentChance)
-    {
-        int decreaseCoefficient = 2;
-        SeparationChances = parentChance / decreaseCoefficient;
-    }
 
     private void OnEnable()
     {
-        _clickHandler.CubeDetected += OnClick;
+        _cubeDetector.CubeDetected += OnClick;
     }
 
     private void OnDisable()
     {
-        _clickHandler.CubeDetected -= OnClick;
+        _cubeDetector.CubeDetected -= OnClick;
     }
 
-    private void OnClick(CubeController clickedCube)
+    private void OnClick(Cube clickedCube)
     {
         if (clickedCube == this)
         {
@@ -37,13 +28,13 @@ public class CubeController : MonoBehaviour
         }
     }
 
-    private void TrySeparation(CubeController cube)
+    private void TrySeparation(Cube cube)
     {
         bool shouldSeparate = Random.Range(0f, _maxSeparationsChance) < cube.SeparationChances;
 
         if (shouldSeparate)
         {
-            List<Rigidbody> spawnedCubes = _spawner.CreateAndGetCubes(cube);
+            List<Cube> spawnedCubes = _spawner.Spawn(cube);
             _exploder.Explode(spawnedCubes);
         }
         else

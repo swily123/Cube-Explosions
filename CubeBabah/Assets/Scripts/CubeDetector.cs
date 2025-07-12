@@ -6,7 +6,7 @@ public class CubeDetector : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] ClickHandler _clickHandler;
 
-    public event Action<CubeController> CubeDetected;
+    public event Action<Cube> CubeDetected;
 
     private void OnEnable()
     {
@@ -25,7 +25,7 @@ public class CubeDetector : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if (hit.transform.TryGetComponent<CubeController>(out CubeController cube))
+            if (hit.transform.TryGetComponent<Cube>(out Cube cube))
             {
                 CubeDetected?.Invoke(cube);
             }
