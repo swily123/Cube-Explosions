@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Cube))]
+
 public class CubeHandler : MonoBehaviour
 {
     [SerializeField] private CubeDetector _cubeDetector;
@@ -21,7 +23,7 @@ public class CubeHandler : MonoBehaviour
 
     private void OnClick(Cube clickedCube)
     {
-        if (clickedCube == this)
+        if (clickedCube == GetComponent<Cube>())
         {
             TrySeparation(clickedCube);
             Destroy(clickedCube.gameObject);
